@@ -1,0 +1,306 @@
+/* --- 全局与页面设置 --- */
+body {
+    /* 恢复原始线条粗细和颜色 */
+    --table-line-width: 1px; 
+    --watermark-text: "HiLUCKEV.COM";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+/* 截图/打印容器 (功能性保留) */
+#capture-container {
+    background-color: #fff;
+    max-width: 1400px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 恢复原始阴影 */
+}
+
+/* 覆盖 .main-container 的 margin/shadow 以适应 capture-container */
+.main-container {
+    max-width: 100%;
+    margin: 0;
+    box-shadow: none;
+    background-color: #fff;
+}
+
+/* --- 核心布局 (恢复原始网格布局) --- */
+.style_row__XPu4s, .style_table_head__dVWgY {
+    display: flex;
+    width: 100%;
+    border-bottom: var(--table-line-width) solid #dee2e6; /* 恢复底部边框 */
+}
+.style_col__xFg86 {
+    flex: 1;
+    padding: 10px 14px;
+    border-left: var(--table-line-width) solid #dee2e6; /* 恢复左侧边框 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+.style_col_title__evR1W, .style_sticky_col__leBPc {
+    flex: 0 0 200px !important;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    border-left: none;
+    text-align: left;
+}
+.style_table_head_spec__9XixG {
+    padding: 5px 14px !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center;
+}
+.style_table_head__dVWgY {
+    border-bottom: 3px solid #007bff;
+}
+
+/* --- 样式美化 --- */
+.style_col_spec_name__xEEU6 { font-size: 14px; font-weight: bold; text-align: center; }
+
+/* ★★★ 修改：大标题栏黑色背景拉通显示 ★★★ */
+.style_table_title__JuEBv {
+    font-size: 16px; 
+    font-weight: bold;
+    margin-top: 25px; 
+    margin-bottom: 5px; 
+    background-color: #000 !important; /* 黑色背景 */
+    color: #fff !important;           /* 白色文字 */
+    line-height: 2;
+    padding-left: 0;
+}
+.style_table_title_col__smmZt {
+    background-color: #000 !important; /* 确保内部元素也是黑色 */
+    color: #fff !important;
+    padding-left: 14px; /* 补回左内边距 */
+}
+.style_table_title_col__smmZt::after {
+    content: " ( ● Standard  ○ Optional  - N/A )"; 
+    font-size: 12px;
+    font-weight: normal; 
+    color: #ccc; /* 灰色提示文字 */
+    margin-left: 15px;
+}
+.style_sticky_col__leBPc {
+    background-color: #000 !important; /* 覆盖可能存在的粘性列背景 */
+}
+
+/* 为标题下方的第一行添加上边框 */
+.style_table_title__JuEBv + .style_row__XPu4s {
+    border-top: var(--table-line-width) solid #ced4da !important;
+}
+
+.style_difference__7DaKX { background-color: #fff3cd; }
+.style_col_sub__1tg7Z { display: block; }
+
+/* --- 功能性样式 (恢复原始隐藏逻辑) --- */
+a, a:hover { color: inherit; text-decoration: none; pointer-events: none; }
+.style_table_total__XWEuj, .style_table_head_spec__9XixG .tw-relative,
+.style_table_head_spec__9XixG .tw-flex.tw-w-full, .style_table_title_prompt__XcBX9 {
+    display: none !important;
+}
+/* 恢复对指导价/经销商报价的原始控制逻辑 */
+.style_row__XPu4s[data-select-title="itemtitle_2"],
+.style_row__XPu4s[data-select-title="itemtitle_3"] { display: none; }
+.style_row__XPu4s[data-select-title="itemtitle_2"] .style_col__xFg86 > *:not(:first-child),
+.style_row__XPu4s[data-select-title="itemtitle_3"] .style_col__xFg86 > *:not(:first-child) { display: none !important; }
+.style_row__XPu4s[data-select-title="itemtitle_2"] .style_col__xFg86 > :first-child::before,
+.style_row__XPu4s[data-select-title="itemtitle_3"] .style_col__xFg86 > :first-child::before {
+    content: "¥ "; font-weight: normal;
+}
+.style_col_color_price__UGzJ0 { display: block !important; font-size: 12px; margin-top: 4px; }
+i.style_col_dot__0ePLw { font-style: normal; text-decoration: none; vertical-align: middle; margin-right: 5px; }
+i.style_col_dot_solid__GmFKI::before { content: "●"; }
+i.style_col_dot_outline__Sb2er::before { content: "○"; }
+
+/* --- 顶部占位符与输入框 --- */
+.header-placeholder {
+    flex: 0 0 200px !important; 
+    background-color: #f8f9fa; 
+    text-align: left;
+    font-weight: bold; 
+    /* ★★★ 修改：标题稍微调小 (24 -> 22) ★★★ */
+    font-size: 22px; 
+    line-height: 1.2;
+    padding: 15px 14px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    border-left: none; 
+    border-right: var(--table-line-width) solid #dee2e6;
+}
+.header-placeholder .slogan { 
+    /* ★★★ 修改：Slogan 调大 (10 -> 14)，颜色加深 ★★★ */
+    font-size: 14px; 
+    font-weight: normal; 
+    margin-top: 6px; 
+    color: #555; /* 颜色加深，增加对比度 */
+}
+.price-input {
+    width: 85%; padding: 5px; margin-top: 5px; font-size: 14px; text-align: center;
+    border: var(--table-line-width) solid #dee2e6; border-radius: 4px; box-sizing: border-box; color: red; font-weight: bold;
+}
+.price-input:focus { outline: none; border-color: #007bff; }
+
+/* --- 图片容器 --- */
+.image-row-container {
+    display: flex; flex-wrap: wrap; padding: 20px; gap: 15px; background-color: #fff;
+    border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: 20px auto; max-width: 1400px;
+}
+.image-row-container img { 
+    width: 250px; height: auto; 
+    border: var(--table-line-width) solid #dee2e6; border-radius: 5px; 
+    cursor: pointer;
+}
+.image-row-container img:hover { opacity: 0.8; }
+
+/* --- 颜色模块特定样式 --- */
+.style_col_colorcontent__hjkjT { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 5px; }
+.style_col_color__5_Vkp { display: flex; align-items: center; gap: 8px; }
+.style_col_color_block__f4_UW span {
+    display: inline-block; width: 16px; height: 16px;
+    border: var(--table-line-width) solid #dee2e6; vertical-align: middle;
+}
+.style_col_color_text__jwxzK { flex: 1; text-align: left; }
+
+/* --- 计算器输入框样式 --- */
+.calculator-input {
+    width: 100%; padding: 8px; box-sizing: border-box; text-align: center;
+    font-size: 13px; 
+    border: var(--table-line-width) solid #ccc; border-radius: 4px;
+    background-color: #ffffdd; /* 浅黄色背景表示输入 */
+}
+select.calculator-input {
+    height: 36px; /* 保持和input一样的高度 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    padding-right: 20px;
+}
+.calculator-input.calculator-output {
+    background-color: #f0f0f0; /* 灰色背景表示输出 */
+    font-weight: bold; color: #333;
+}
+
+/* --- 动态价格行输入框样式 --- */
+.dynamic-price-input {
+    width: 85%; padding: 5px; margin: 0 auto; /* 居中 */ font-size: 14px; text-align: center;
+    border: var(--table-line-width) solid #dee2e6; border-radius: 4px; box-sizing: border-box; 
+    font-weight: 800; /* 加粗 */
+    color: #198754; /* 使用深翡翠绿 */
+}
+.dynamic-price-input:focus { outline: none; border-color: #198754; }
+.dynamic-price-input::placeholder { color: #198754; font-weight: 800; opacity: 1; }
+.dynamic-price-input::-webkit-input-placeholder { color: #198754; font-weight: 800; }
+.dynamic-price-input::-moz-placeholder { color: #198754; font-weight: 800; opacity: 1; }
+
+/* ======== 库存管理UI样式 ======== */
+.stock-color-checkbox { margin-left: auto; cursor: pointer; vertical-align: middle; }
+.stock-action-cell { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.stock-qty-input { width: 80px; padding: 5px; text-align: center; border: var(--table-line-width) solid #ccc; border-radius: 4px; }
+.stock-qty-input:disabled { background-color: #eee; cursor: not-allowed; }
+.stock-add-button { padding: 4px 10px; font-size: 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+.stock-add-button:disabled { background-color: #9ecb9e; cursor: not-allowed; }
+.stock-display-cell { text-align: center !important; line-height: 1.8; font-size: 12px; vertical-align: top; white-space: pre-line; }
+.stock-color-item { display: flex; align-items: center; justify-content: center; margin-bottom: 5px; gap: 5px; flex-wrap: wrap; }
+.stock-color-block { display: inline-block; width: 12px; height: 12px; border: var(--table-line-width) solid #dee2e6; vertical-align: middle; }
+.stock-color-combination { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.stock-color-pair { display: flex; align-items: center; gap: 5px; }
+.stock-qty-display { margin-left: 5px; font-weight: bold; }
+
+/* --- 工具面板 --- */
+.tool-panel {
+    text-align: center; margin: 15px; padding: 15px;
+    border: 2px dashed #007bff; background-color: #f4faff;
+}
+#imageURLInput { width: 80%; padding: 8px; margin-top: 10px; border: 1px solid #ccc; border-radius: 4px; }
+#addImageButton { font-size: 16px; padding: 8px 15px; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 5px; }
+#addImageButton:hover { background-color: #218838; }
+
+/* 按钮通用样式 */
+#openSettingsButton, #downloadImageButton, #printButton { 
+    width: auto !important; padding: 6px 15px; font-size: 13px; cursor: pointer; color: white; border: none; border-radius: 5px; 
+}
+#openSettingsButton { background-color: #6c757d; }
+#openSettingsButton:hover { background-color: #5a6268; }
+
+#downloadImageButton { background-color: #6610f2; }
+#downloadImageButton:hover { background-color: #520dc2; }
+
+/* 打印按钮样式 (不再有单独的 savePdfButton 样式) */
+#printButton { background-color: #0dcaf0; color: #000; }
+#printButton:hover { background-color: #31d2f2; }
+
+/* --- 内部工具标题样式 --- */
+.internal-tool-title { background-color: #fdf5f6 !important; border-left: 5px solid #dc3545; color: #dc3545 !important; }
+.internal-tool-title .style_table_title_col__smmZt { background-color: transparent !important; color: #dc3545 !important; }
+
+/* --- 汇率与选项 --- */
+.currency-rate-input { width: 60px; padding: 3px; font-size: 13px; border: var(--table-line-width) solid #ccc; border-radius: 3px; margin-left: 5px; }
+.price-options-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; font-size: 14px; }
+.checkbox-options { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 15px; }
+.currency-options { border-left: 2px solid #007bff; padding-left: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+#fetchRatesButton { font-size: 13px; padding: 5px 10px; cursor: pointer; background-color: #17a2b8; color: white; border: none; border-radius: 4px; }
+#fetchRatesButton:hover { background-color: #138496; }
+#rate-status { font-size: 12px; color: #6c757d; margin-top: 5px; min-height: 1.2em; }
+
+/* --- 页脚设计 (新增功能) --- */
+.report-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 40px;
+    margin-top: 30px;
+    border-top: 2px solid #333;
+    font-size: 14px;
+    background-color: #fff;
+}
+.footer-item { font-weight: bold; }
+.footer-item span { font-weight: normal; margin-left: 5px; }
+
+/* --- 打印专用样式 --- */
+@media print {
+    body { background-color: #fff; margin: 0; }
+    .main-container { margin: 0; padding: 0; border: none; box-shadow: none; }
+    .style_difference__7DaKX { background-color: #fff3cd !important; -webkit-print-color-adjust: exact; }
+    .style_row__XPu4s { page-break-inside: avoid; }
+    .tool-panel { display: none; }
+    .header-placeholder, .price-input { -webkit-print-color-adjust: exact; background-color: #f8f9fa !important; font-weight: bold; }
+    .price-input { border: none; }
+    .image-row-container { box-shadow: none; margin: 0; padding: 0; page-break-before: always; justify-content: center; display: flex; flex-wrap: wrap; gap: 15px; }
+    .image-row-container img { width: 250px; height: auto; border: none; margin: 0; page-break-inside: avoid; }
+    .style_col_colorcontent__hjkjT, .style_col_color__5_Vkp, .style_col_color_price__UGzJ0, .style_col_color_block__f4_UW span { -webkit-print-color-adjust: exact; color-adjust: exact; }
+    
+    #stock-entry-module, #calculator-section { display: none !important; }
+    select.calculator-input { display: none; }
+    .calculator-input { border: none; padding: 4px; background-color: #fff !important; }
+    .calculator-input.calculator-output { font-weight: bold; color: #000 !important; }
+    .dynamic-price-input { border: none; padding: 4px; color: #198754 !important; }
+    .stock-display-cell { color: #000 !important; background-color: #fff !important; }
+    .stock-color-block { -webkit-print-color-adjust: exact !important; color-adjust: exact !important; border: var(--table-line-width) solid #ccc !important; }
+    
+    /* 打印时的黑色大标题栏 */
+    .style_table_title__JuEBv, .style_table_title_col__smmZt {
+        -webkit-print-color-adjust: exact !important;
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+    .style_table_title_col__smmZt::after { color: #999; }
+
+    #capture-container { box-shadow: none; margin: 0; width: 100%; max-width: 100%; }
+
+    body::before {
+        content: var(--watermark-text); 
+        position: fixed; top: 50%; left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg); font-size: 3rem; 
+        font-weight: bold; color: rgba(0, 0, 0, 0.03); -webkit-print-color-adjust: exact;
+        z-index: 9999; pointer-events: none; white-space: nowrap;
+    }
+}

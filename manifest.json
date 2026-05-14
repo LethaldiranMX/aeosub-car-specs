@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "汽车参数打印助手 - 适配汽车之家",
+  "version": "1.2",
+  "description": "一键提取并格式化汽车参数配置表，支持打印预览。",
+  "author": "LethaldiranMX",
+  "homepage_url": "https://aeosub.com",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.frankfurter.app/*"
+  ],
+  "action": {
+    "default_title": "生成参数报告",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

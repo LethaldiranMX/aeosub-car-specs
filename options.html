@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>EV Tool 设置</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 20px; width: 400px; color: #333; }
+        h2 { margin-top: 0; color: #007bff; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .section { margin-bottom: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px; }
+        h3 { font-size: 14px; margin-top: 0; margin-bottom: 10px; color: #555; }
+        label { display: block; margin-bottom: 8px; font-size: 13px; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 6px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 5px; }
+        .help-text { font-size: 11px; color: #888; margin-bottom: 10px; display: block; }
+        button { background-color: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; width: 100%; font-size: 14px; }
+        button:hover { background-color: #218838; }
+        #status { text-align: center; margin-top: 10px; font-size: 12px; height: 15px; }
+        .footer-credits { margin-top: 30px; text-align: center; font-size: 11px; color: #aaa; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>工具配置 (Settings)</h2>
+
+    <div class="section">
+        <h3>品牌与打印 (Branding)</h3>
+        <label>
+            公司名称 (Logo Title):
+            <input type="text" id="companyName" placeholder="例如: Your Company Name">
+        </label>
+        <label>
+            标语 (Slogan):
+            <input type="text" id="slogan" placeholder="例如: Your Company Slogan">
+        </label>
+        <label>
+            打印水印 (Watermark):
+            <input type="text" id="watermark" placeholder="例如: yourwebsite.com">
+        </label>
+        <span class="help-text">留空则不显示水印。</span>
+    </div>
+
+    <div class="section">
+        <h3>页脚联系信息 (Footer Contact)</h3>
+        <label>销售经理 (Sales Manager): <input type="text" id="contactName" placeholder="例如: Lanny"></label>
+        <label>手机/Mobile: <input type="text" id="contactPhone" placeholder="例如: +86 17729666782"></label>
+        <label>WhatsApp: <input type="text" id="contactWhatsApp" placeholder="例如: 86 17729666782"></label>
+        <label>WeChat: <input type="text" id="contactWeChat" placeholder="例如: 17729666782"></label>
+        <label>电子邮箱 (Email): <input type="text" id="contactEmail" placeholder="例如: sales@hiluckev.com"></label>
+    </div>
+
+    <div class="section">
+        <h3>计算器默认值 (Calculator Defaults)</h3>
+        <label>默认加配 (RMB): <input type="number" id="def_jiapei" placeholder="280"></label>
+        <label>默认国内物流 (RMB): <input type="number" id="def_wuliu" placeholder="3500"></label>
+        <label>默认每台利润 (RMB): <input type="number" id="def_lirun" placeholder="0"></label>
+    </div>
+
+    <button id="save">保存配置 (Save)</button>
+    <div id="status"></div>
+
+    <div class="footer-credits">
+        Developed by lethaldiranMX<br>
+        Mobile: 13310282690 | WeChat: lethaldiranMX<br>
+        Email: senluoyunhai@gmail.com
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
